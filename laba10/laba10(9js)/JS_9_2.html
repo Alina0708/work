@@ -1,0 +1,29 @@
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>9_JS</title>
+    <script language="JavaScript">
+        function handleLoad() {
+            const dragImageElement = document.getElementById('imageMove')
+            function handleMove() {
+                const currentCoords = dragImageElement.getBoundingClientRect();//ткущее координаты
+                dragImageElement.style.left = currentCoords.left + 10 + 'px';
+            }
+            setInterval(handleMove, 65);
+        }
+
+
+
+
+    </script>
+
+</head>
+
+<body onload="handleLoad()">
+    <img src="images.jpg" id='imageMove' draggable="true" style='position: absolute; left: 50px; top: 100px'>
+</body>
+
+</html>

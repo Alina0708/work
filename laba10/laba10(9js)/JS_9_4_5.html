@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>9</title>
+
+
+    <style type="text/css">
+        #canvas {
+            border: 2px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <canvas id="canvas" width="600" height="600"></canvas>
+
+    <form>
+        <input type="radio" value="1" name="func" checked /> y = x<sup>2</sup>
+        <input type="radio" value="2" name="func" /> y = x<sup>3</sup>
+        <input type="radio" value="3" name="func" /> y = sin x
+        <input type="radio" value="4" name="func" /> y = cos x
+
+        <select name="colour">
+            <option value="violet">Violet</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="yellow">Yellow</option>
+            <option value="black">Black</option>
+        </select>
+
+        <input type="button" value="Print" onclick="draw()">
+    </form>
+</body>
+
+<script type="text/javascript">
+    const canvasPlot = document.getElementById("canvas");//canvas это HTML элемент, использующийся для рисования графики средствами языков программирования 
+    const ctx = canvasPlot.getContext('2d');//(двумерный контекст рисования на холсте)кисть 
+
+    const canvasW = canvasPlot.clientWidth;//св-во равняется ширине элемента в пикселях, включая padding, но исключая ширину рамки (border), внешние отступы (margin)
+    const canvasH = canvasPlot.clientHeight;//область для рисования
+
+    const scaleX = 50;//через какой промежуток рисовать
+    const scaleY = 50;
+
+    let clear = true;
+
+    const ax = canvasW / 2;
+    const ay = canvasH / 2;
+
+
+    ctx.beginPath();//Метод beginPath() начинает контур или сбрасывает текущий контур
+    ctx.strokeStyle = 'black';//цвет линии (задаёт цвет или стиль, используемый при выполнении обводки фигур)
+
+    ctx.moveTo(ax, 0);//устанавливает координаты точки, из которой начнется рисование сле-дующего объекта;
+    ctx.lineTo(ax, canvasH);//рисует прямую линию
+    ctx.moveTo(0, ay);
+    ctx.lineTo(canvasW, ay);
+
+    ctx.stroke();//рисует фигуру с внешней обводкой
+    ctx.closePath();
+
+    function draw() {
+        var functions = document.getElementsByName("func");
+        var curr_func;
+        if (clear == false) {
+            ctx.clearRect(0, 0, 600, 600);//context.clearRect(x, y, width, height); очищает заданную область пикселей внутри данного прямоугольника.
+            ctx.beginPath();
+            ctx.strokeStyle = 'black';
+
+            ctx.moveTo(ax, 0);
+            ctx.lineTo(ax, canvasH);
+            ctx.moveTo(0, ay);
+            ctx.lineTo(canvasW, ay);
+
+            ctx.stroke();
+            ctx.closePath();
+        }
+        for (let i = 0; i < functions.length; i++) {
+            if (functions[i].checked) curr_func = functions[i];
+        }
+
+        var choice = Number(curr_func.value);
+
+        switch (choice) {
+            case 1: draw1(); break;
+            case 2: draw2(); break;
+            case 3: draw3(); break;
+            case 4: draw4(); break;
+        }
+
+    }
+
+    function draw1() {
+        var colour = document.forms[0].colour.value;
+        ctx.fillStyle = colour; //задаёт цвет или стиль, используемый при заливке фигур
+        for (let i = 0; i <= canvasW; i++) {
+            const x = (i - ax) / scaleX;
+            const y = Math.pow(x, 2);
+            ctx.fillRect(i, ay - scaleY * y, 2, 2);//рисует залитый прямоугольник в позиции (x, y), размер которого определяется аргументами width и height
+        }
+        clear = false;
+    }
+
+
+    function draw2() {
+        var colour = document.forms[0].colour.value;
+        ctx.fillStyle = colour;
+        for (let i = 0; i <= canvasW; i++) {
+            const x = (i - ax) / scaleX;
+            const y = Math.pow(x, 3);
+            ctx.fillRect(i, ay - scaleY * y, 2, 2);//рисует залитый прямоугольник в позиции (x, y), размер которого определяется аргументами width и height
+        }
+        clear = false;
+    }
+
+
+
+    function draw3() {
+        var colour = document.forms[0].colour.value;
+        ctx.fillStyle = colour;
+        for (let i = 0; i <= canvasW; i++) {
+            const x = (i - ax) / scaleX;
+            const y = Math.sin(x);
+            ctx.fillRect(i, ay - scaleY * y, 2, 2);//рисует залитый прямоугольник в позиции (x, y), размер которого определяется аргументами width и height
+        }
+        clear = false;
+    }
+
+    function draw4() {
+        var colour = document.forms[0].colour.value;
+        ctx.fillStyle = colour;
+        for (let i = 0; i <= canvasW; i++) {
+            const x = (i - ax) / scaleX;
+            const y = Math.cos(x);
+            ctx.fillRect(i, ay - scaleY * y, 2, 2);//рисует залитый прямоугольник в позиции (x, y), размер которого определяется аргументами width и height
+        }
+        clear = false;
+    }
+</script>
+
+</html>

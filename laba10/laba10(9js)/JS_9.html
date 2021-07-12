@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>9_JS</title>
+  <script language="JavaScript">
+    function handleLoad() {
+      const dragElement = document.getElementById("drag");
+      const dragImageElement = document.getElementById('imageMove')
+
+      dragElement.onmousedown = function (e) {
+        const currentCoords = dragElement.getBoundingClientRect();//метод ткущее координаты
+        const offsetX = e.pageX - currentCoords.left;//корректировка положение курсора 
+        const offsetY = e.pageY - currentCoords.top;
+
+        document.onmousemove = function (e) {
+          const pageY = e.pageY
+          const pageX = e.pageX
+
+          dragElement.style.left = pageX - offsetX + 'px'
+          dragElement.style.top = pageY - offsetY + 'px'
+
+        }
+        dragElement.onmouseup = function () {
+          document.onmousemove = null
+          dragElement.onmouseup = null;
+        }
+
+        dragElement.ondragstart = function () {// сохранение позиции элемента при отпускании мышки 
+          return false;
+        };
+
+      };
+
+
+      dragImageElement.onmousedown = function (e) {
+        const currentCoords = dragImageElement.getBoundingClientRect();//ткущее координаты
+        const offsetX = e.pageX - currentCoords.left;//корректировка положение курсора 
+        const offsetY = e.pageY - currentCoords.top;
+
+        document.onmousemove = function (e) {
+          const pageY = e.pageY
+          const pageX = e.pageX
+
+          dragImageElement.style.left = pageX - offsetX + 'px'
+          dragImageElement.style.top = pageY - offsetY + 'px'
+
+        }
+        dragImageElement.onmouseup = function () {
+          document.onmousemove = null
+          dragImageElement.onmouseup = null;
+        }
+
+        dragImageElement.ondragstart = function () {// сохранение позиции элемента при отпускании мышки 
+          return false;
+        };
+
+      };
+    }
+
+
+
+
+  </script>
+
+</head>
+
+<body onload="handleLoad()">
+  <div id="drag" draggable="true" style='position: absolute; z-index: 2'>
+    <h1>Draggable text</h1>
+  </div>
+  <img src="images.jpg" id='imageMove' draggable="true" style='position: absolute; left: 50px; top: 100px'>
+</body>
+
+</html>

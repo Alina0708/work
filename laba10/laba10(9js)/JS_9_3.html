@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>9_JS</title>
+    <script language="JavaScript">
+        function handleLoad() {
+            const dragImageElement = document.getElementById('imageMove')
+
+            function getRndInteger(min, max) { //Генерация случайного числа с шагом X
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function handleMove() {
+                const currentCoords = dragImageElement.getBoundingClientRect();//ткущее координаты
+                dragImageElement.style.top = currentCoords.top + getRndInteger(-1, 1) * 20 + 'px';//Метод Math.random() возвращает псевдослучайное число с плавающей запятой из диапазона [0, 1)
+                dragImageElement.style.left = currentCoords.left + Math.random() * 10 + 'px';
+            }
+
+            const interval = setInterval(handleMove, 65);
+
+            setTimeout(function () {
+                clearInterval(interval)
+                dragImageElement.style.top = '100px'
+                dragImageElement.style.left = '50px'
+            }, 6000)
+        }
+
+
+
+
+    </script>
+
+</head>
+
+<body onload="handleLoad()">
+    <img src="images.jpg" id='imageMove' draggable="true" style='position: absolute; left: 50px; top: 100px'>
+</body>
+
+</html>
