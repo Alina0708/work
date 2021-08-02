@@ -1,0 +1,36 @@
+.table{
+    display:table;
+    margin: auto;
+    height:auto;
+    width:auto;
+    border:none;
+    border-collapse: collapse;
+    background-color: rgb(185, 185, 224);
+}
+.row{
+display:table-row;
+height:auto;
+width:auto;
+border:none;
+}
+.cell{
+display:table-cell;
+width: 150px;
+height: 150px;
+border:2px solid black;
+text-align: center;
+font-size: 100px;
+}
+
+.table .row:first-child div{ /* top*/
+    border-top:none !important;
+}
+.table .row:last-child div{ /* bottom*/
+    border-bottom:none !important;
+}
+.table div:nth-child(3n+1){ /* 1 4 7*/
+    border-left:none !important;
+}
+.table div:nth-child(3n){ /*right*/
+    border-right:none !important;
+}
