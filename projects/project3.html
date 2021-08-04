@@ -1,27 +1,49 @@
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="project3.css"/>
+    <title>x vs 0</title>
+    <link rel="stylesheet" type="text/css" href="project3.css" />
     <script defer src="project3.js"></script>
 </head>
+
 <body>
-    <div class="table" onclick="game(event)"> 
-    <div class="row">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+    <div id="words"></div>
+
+    <div>
+        <div class="table" onclick="game(event)">
+            <div class="row">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <div class="row">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <div class="row">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+        </div>
+
+        <table class="enterWinner">
+            <tr>
+                <td>X</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td class="winnerX">0</td>
+                <td class="winnerO">0</td>
+            </tr>
+        </table>
+
     </div>
-    <div class="row">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-    </div>
-    <div class="row">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-    </div>
-    </div>
+
+
+    <input type="button" class="blueButton" value="Очистить поле " onclick="cleaning()">
 </body>
+
 </html>

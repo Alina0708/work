@@ -1,36 +1,79 @@
-.table{
-    display:table;
+.table {
+    display: table;
     margin: auto;
-    height:auto;
-    width:auto;
-    border:none;
+    height: auto;
+    width: auto;
+    border: none;
     border-collapse: collapse;
-    background-color: rgb(185, 185, 224);
-}
-.row{
-display:table-row;
-height:auto;
-width:auto;
-border:none;
-}
-.cell{
-display:table-cell;
-width: 150px;
-height: 150px;
-border:2px solid black;
-text-align: center;
-font-size: 100px;
 }
 
-.table .row:first-child div{ /* top*/
-    border-top:none !important;
+.row {
+    display: table-row;
+    height: auto;
+    width: auto;
+    border: none;
 }
-.table .row:last-child div{ /* bottom*/
-    border-bottom:none !important;
+
+.cell {
+    display: table-cell;
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    text-align: center;
+    font-size: 100px;
 }
-.table div:nth-child(3n+1){ /* 1 4 7*/
-    border-left:none !important;
+
+.table .row:first-child div {
+    /* top*/
+    border-top: none !important;
 }
-.table div:nth-child(3n){ /*right*/
-    border-right:none !important;
+
+.table .row:last-child div {
+    /* bottom*/
+    border-bottom: none !important;
+}
+
+.table div:nth-child(3n+1) {
+    /* 1 4 7*/
+    border-left: none !important;
+}
+
+.table div:nth-child(3n) {
+    /*right*/
+    border-right: none !important;
+}
+
+#words {
+    margin-left: 500px;
+    margin-top: 50px;
+    height: 30px;
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.enterWinner {
+    margin-top: 25px;
+    border: 2px black solid;
+    height: 150px;
+    width: 150px;
+    border-collapse: collapse;
+}
+
+tr {
+    border: 2px black solid;
+}
+
+td {
+    height: 75px;
+    ;
+    width: 75px;
+    text-align: center;
+    border: 2px black solid;
+}
+
+.blueButton {
+    background-color: blue;
+    height: 35px;
+    width: 500px;
+    margin-left: 350px;
 }
